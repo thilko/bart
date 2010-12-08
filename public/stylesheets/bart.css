@@ -1,0 +1,10 @@
+a:link, a:visited { color:#39a2ce; text-decoration:underline; }
+a:hover, a:active { color:#39a2ce; text-decoration:none; }
+
+a.warn { color:#ff8500; }
+
+.ico { background-repeat:no-repeat; padding-left:22px; }
+  .ico.deploy {	background-image:url(/images/icons/deploy.png); }
+
+table { width:100%; text-align:left; border: 1px solid black; }
+tr { width:100% }

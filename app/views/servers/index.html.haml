@@ -1,0 +1,17 @@
+%h1 Serverübersicht
+
+- if @servers.empty?
+  Keine Server vorhanden.
+- else
+  %table{ :border => 1}
+    %tr
+      %td
+      %td Name
+      %td Status
+      %td Letzte Änderung
+    - @servers.each do |server|
+      %tr
+        %td= link_to "deploy", deploy_server_url(server.id), :class => "ico deploy"
+        %td= server.name
+        %td= server.status
+        %td= l server.updated_at
