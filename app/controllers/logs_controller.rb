@@ -1,9 +1,10 @@
 class LogsController < ApplicationController
 
   def create
-    server = Servers.where(params[:server_name]).first
-    server.logs << Logs.create(params[:log])
+    server = Server.where(:name => params[:server_name]).first
+    raise "Server #{params[:server_name]} not found!" unless server
+
+    server.logs << Log.create(params[:log])
     server.save
   end
-
 end

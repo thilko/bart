@@ -1,6 +1,6 @@
 class Server < ActiveRecord::Base
 
-  #has_many :logs
+  has_many :logs
 
   def deploy
     self.status = "deploy"

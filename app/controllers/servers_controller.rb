@@ -27,8 +27,6 @@ private
 
   def fetch_server
     @server = Server.where(:name=> params[:id]).first
-    p @server.inspect
-    p @server.respond_to? :deploy
   end
 
   def save_server

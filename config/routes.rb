@@ -7,5 +7,7 @@ Bart::Application.routes.draw do
       get "/error" => "servers#error"
     end
   end
+
+  resources :logs
   root :to => "servers#index"
 end

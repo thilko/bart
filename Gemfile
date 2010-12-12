@@ -13,6 +13,7 @@ group :development, :test do
   gem "fuubar", "~> 0.0.2"
   gem "autotest-fsevent", "~> 0.2.3"
   gem "autotest-growl", "~> 0.2.6"
+  gem "mocha"
 end
 
 
