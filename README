@@ -1,0 +1,7 @@
+==Bart==
+Blau Server Test Server Management made simple.
+
+Bart is just a simple and really small sinatra app which receives info messages from the
+well-known and glorious deploy-app.
+
+Hooray!
