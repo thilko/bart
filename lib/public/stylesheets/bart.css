@@ -1,0 +1,8 @@
+html { font-family: monospace; }
+
+h1.headline { font-size: 40px }
+table.data { font-size: 30px; width: 70%; position:absolute; left:25%; top:25% }
+td,th { text-align: left; padding-left:10px; padding-right:15px }
+td.deploy { background:yellow }
+td.up { background:green }
+td.down { background:red }

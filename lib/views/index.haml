@@ -1,7 +1,19 @@
-%table
-  - @server.each do |server|
-    %tr
-      %td= server.name
-      %td= server.status
+%html
+  %head
+    %link{:href=>"/stylesheets/bart.css", :media=>"screen", :rel=>"stylesheet", :type=>"text/css"}
+
+  %body
+    %h1.headline Testserver Monitoring
+    %table.data
+      %thead
+        %tr
+          %th Name
+          %th Status
+          %th Zeitpunkt
+      - @server.each do |server|
+        %tr
+          %td= server.name
+          %td{ :class => server.status}= server.status
+          %td= format_date server.statusdate
 
   

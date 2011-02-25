@@ -7,6 +7,12 @@ require "server"
 DataMapper.setup(:default, "sqlite:///#{File.expand_path("db")}/bart.db")
 DataMapper.auto_upgrade!
 
+helpers do
+  def format_date(date)
+    date.strftime("%d.%m.%Y %H:%M:%S")
+  end
+end
+
 get "/server/:name/up" do
   server = first_or_create(params[:name])
   update server, "up"
@@ -34,7 +40,7 @@ def list_server
 end
 
 def update(server, status)
-  server.update(:status => status)
+  server.update :status => status, :statusdate => DateTime.now
 end
 
 def first_or_create(name)
