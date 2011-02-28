@@ -5,6 +5,8 @@ module Bart
     DataMapper.setup(:default, "sqlite:///#{File.expand_path("db")}/bart.db")
     DataMapper.auto_upgrade!
 
+    set :root, File.expand_path("../../", __FILE__)
+
     helpers do
       def format_date(date)
         date.strftime("%d.%m.%Y %H:%M:%S")
@@ -39,7 +41,7 @@ module Bart
     private
 
     def list_server
-      @server = Bart::Server.all || []
+      @server = Server.all || []
     end
 
     def update(server, props = {})
@@ -47,7 +49,7 @@ module Bart
     end
 
     def first_or_create(name)
-      Bart::Server.first_or_create(:name => params[:name])
+      Server.first_or_create(:name => params[:name])
     end
   end
 end
