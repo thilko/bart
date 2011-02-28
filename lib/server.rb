@@ -6,5 +6,6 @@ module Bart
     property :name,           String
     property :status,         String
     property :statusdate,     DateTime, :default => DateTime.now 
+    property :message,        String, :length => 100
   end
 end

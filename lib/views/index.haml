@@ -9,11 +9,13 @@
         %tr
           %th Name
           %th Status
-          %th Zeitpunkt
+          %th Time
+          %th Message
       - @server.each do |server|
         %tr
           %td= server.name
           %td{ :class => server.status}= server.status
           %td= format_date server.statusdate
+          %td= server.message
 
   
