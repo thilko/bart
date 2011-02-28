@@ -15,5 +15,5 @@ $:.unshift lib unless $:.include?(lib)
 
 # roll the dice!
 require "bart"
-run Sinatra::Application
+run Bart::App 
 
