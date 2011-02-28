@@ -1,10 +1,10 @@
 require "spec_helper"
 
-describe Bart do
+describe Bart::App do
   include Rack::Test::Methods
 
   def app
-    Sinatra::Application
+    Bart::App
   end
 
   describe "GET /" do
