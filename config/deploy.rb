@@ -3,8 +3,8 @@ require "bundler/capistrano"
 
 set :application, "bart"
 set :scm, :git
-set :repository, "git@github.com:blaulabs/#{application}.git"
-set :branch, "master"
+set :repository, "git@github.com:blackhacker/#{application}.git"
+set :branch, "trunk"
 
 server "harrington1", :app, :web, :db, :primary => true
 set :user, "ruby"
