@@ -1,11 +1,11 @@
 module Bart
   class Server
-    include ::DataMapper::Resource
+    include MongoMapper::Document
+    set_database_name "bart"
 
-    property :id,             Integer, :serial => true
-    property :name,           String
-    property :status,         String
-    property :statusdate,     DateTime, :default => DateTime.now 
-    property :message,        String, :length => 100
+    key :name,           String
+    key :status,         String
+    key :statusdate,     Time 
+    key :message,        String
   end
 end

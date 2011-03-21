@@ -1,11 +1,14 @@
 require "server"
 
+MongoMapper.connection = Mongo::Connection.new('localhost')
+MongoMapper.database = 'bart'   
+
 module Bart
   class App < Sinatra::Base
-    DataMapper.setup(:default, "sqlite:///#{File.expand_path("db")}/bart.db")
-    DataMapper.auto_upgrade!
-
-    set :root, File.expand_path("../../", __FILE__)
+    
+    configure do
+      set :root, File.expand_path("../../", __FILE__)
+    end
 
     helpers do
       def format_date(date)
@@ -41,11 +44,12 @@ module Bart
     private
 
     def list_server
-      @server = Server.all || []
+      @server = Server.all || [] 
     end
 
     def update(server, props = {})
-      server.update props.merge(:statusdate => DateTime.now)
+      server.update_attributes props.merge(:statusdate => DateTime.now)
+      server.save
     end
 
     def first_or_create(name)

@@ -8,6 +8,10 @@ describe Bart::App do
   end
 
   describe "GET /" do
+    before do
+      Server.expect(:first_or_create).returns(nil)
+    end
+
     it "should render the home page" do
       get "/"
       last_response.should be_ok
