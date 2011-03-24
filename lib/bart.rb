@@ -1,6 +1,6 @@
 require "server"
 
-MongoMapper.connection = Mongo::Connection.new('localhost')
+MongoMapper.connection = Mongo::Connection.new("harrington1")
 MongoMapper.database = 'bart'   
 
 module Bart

@@ -1,4 +1,3 @@
-p "blaaa"
 # initiate logging
 FileUtils.mkdir_p "log" unless File.directory? "log"
 log = File.new "log/bart.log", "a+"

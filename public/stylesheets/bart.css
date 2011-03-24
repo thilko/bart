@@ -1,7 +1,7 @@
 html { font-family: monospace; }
 
 h1.headline { font-size: 40px; text-align:center }
-table.data { font-size: 25px; width: 70%; position:absolute; top:25% }
+table.data { font-size: 25px; width: 100%; position:absolute; top:25% }
 td,th { text-align: left; padding-left:10px; padding-right:15px }
 td.deploy { background:yellow }
 td.up { background:green }
