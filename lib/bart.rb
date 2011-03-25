@@ -8,6 +8,7 @@ module Bart
     
     configure do
       set :root, File.expand_path("../../", __FILE__)
+      set :method_override, true
     end
 
     helpers do
@@ -34,6 +35,12 @@ module Bart
     get "/server/:name/log/:message" do
       server = first_or_create(params[:name])
       update server, :message => params[:message]
+    end
+
+    put "/server/:name/deploy" do
+      server = first_or_create(params[:name])
+      server.deploy
+      update server, :message => "Deployment triggered", :status => "deploy"
     end
 
     get "/" do

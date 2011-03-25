@@ -7,5 +7,13 @@ module Bart
     key :status,         String
     key :statusdate,     Time 
     key :message,        String
+
+    def deploy
+      `"ssh deploy@#{name} 'rake deploy'"`
+    end
+
+    def deployable?
+      status == "up"
+    end
   end
 end

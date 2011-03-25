@@ -8,9 +8,6 @@ describe Bart::App do
   end
 
   describe "GET /" do
-    before do
-      Server.expect(:first_or_create).returns(nil)
-    end
 
     it "should render the home page" do
       get "/"
@@ -40,20 +37,31 @@ describe Bart::App do
   describe "GET /server/goya/deploy" do
     it "should save the status for test server" do
       get "/server/goya/deploy"
-      
+
       last_response.should be_ok
       Bart::Server.first(:name => "goya").status.should == "deploy"
     end
   end
 
-   describe "GET /server/goya/log/any_log_message" do
+  describe "GET /server/goya/log/any_log_message" do
     it "should save the status for test server" do
       get "/server/goya/log/any_log_message"
-      
+
       last_response.should be_ok
       Bart::Server.first(:name => "goya").message.should == "any_log_message"
     end
   end 
 
+  describe "POST /server/goya/deploy" do
+    before do
+      Bart::Server.any_instance.expects(:deploy)
+    end
+
+    it "should start the deployment for the server" do
+      post "/server/goya/deploy"
+
+      last_response.should be_ok
+    end
+  end 
 end
 
