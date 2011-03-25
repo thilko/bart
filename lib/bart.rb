@@ -1,7 +1,14 @@
 require "server"
 
-MongoMapper.connection = Mongo::Connection.new("harrington1")
-MongoMapper.database = 'bart'   
+MongoMapper.connection = Mongo::Connection.new("flame.mongohq.com", 27094)
+
+if ENV["RACK_ENV"] == "test"
+  MongoMapper.database = 'bart-test'
+else
+  MongoMapper.database = 'bart'
+end
+
+MongoMapper.database.authenticate(ENV["BART_DB_USER"], ENV["BART_DB_PSWD"])
 
 module Bart
   class App < Sinatra::Base
@@ -19,17 +26,17 @@ module Bart
 
     get "/server/:name/up" do
       server = first_or_create(params[:name])
-      update server, :status => "up"
+      update server, :status => :up
     end
 
     get "/server/:name/down" do
       server = first_or_create(params[:name])
-      update server, :status => "down"
+      update server, :status => :down
     end
 
     get "/server/:name/deploy" do
       server = first_or_create(params[:name])
-      update server, :status => "deploy"
+      update server, :status => :deploy
     end
 
     get "/server/:name/log/:message" do
@@ -40,7 +47,7 @@ module Bart
     put "/server/:name/deploy" do
       server = first_or_create(params[:name])
       server.deploy
-      update server, :message => "Deployment triggered", :status => "deploy"
+      update server, :message => "Deployment triggered", :status => :deploy
     end
 
     get "/" do

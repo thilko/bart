@@ -21,7 +21,7 @@ describe Bart::App do
       get "/server/goya/up"
       
       last_response.should be_ok
-      Bart::Server.first(:name => "goya").status.should == "up"
+      Bart::Server.first(:name => "goya").up?.should be_true
     end
   end 
   
@@ -30,7 +30,7 @@ describe Bart::App do
       get "/server/goya/down"
       
       last_response.should be_ok
-      Bart::Server.first(:name => "goya").status.should == "down"
+      Bart::Server.first(:name => "goya").down?.should be_true
     end
   end 
   
@@ -39,7 +39,7 @@ describe Bart::App do
       get "/server/goya/deploy"
 
       last_response.should be_ok
-      Bart::Server.first(:name => "goya").status.should == "deploy"
+      Bart::Server.first(:name => "goya").deploy?.should be_true
     end
   end
 
@@ -58,7 +58,7 @@ describe Bart::App do
     end
 
     it "should start the deployment for the server" do
-      post "/server/goya/deploy"
+      put "/server/goya/deploy"
 
       last_response.should be_ok
     end

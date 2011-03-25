@@ -1,7 +1,6 @@
 module Bart
   class Server
     include MongoMapper::Document
-    set_database_name "bart"
 
     key :name,           String
     key :status,         String
@@ -13,7 +12,19 @@ module Bart
     end
 
     def deployable?
-      status == "up"
+      status.to_sym == :up
+    end
+
+    def up?
+      status.to_sym == :up
+    end
+
+    def down?
+      status.to_sym == :down
+    end
+
+    def deploy?
+      status.to_sym == :deploy
     end
   end
 end
