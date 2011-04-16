@@ -8,7 +8,7 @@ module Bart
     key :message,        String
 
     def deploy
-      `"ssh deploy@#{name} 'rake deploy'"`
+      #`"ssh deploy@#{name} 'rake deploy'"`
     end
 
     def deployable?

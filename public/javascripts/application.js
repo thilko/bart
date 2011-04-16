@@ -8,7 +8,10 @@ $(function() {
         form.hide().append(metadata_input).appendTo('body');
         form.submit();
     });
- 
-  
+
+  setInterval(function() {
+    location.reload();
+  }, 5000);
+
 
 });

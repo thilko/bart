@@ -1,14 +1,12 @@
 require "server"
 
-MongoMapper.connection = Mongo::Connection.new("flame.mongohq.com", 27094)
+MongoMapper.connection = Mongo::Connection.new("localhost")
 
 if ENV["RACK_ENV"] == "test"
   MongoMapper.database = 'bart-test'
 else
   MongoMapper.database = 'bart'
 end
-
-MongoMapper.database.authenticate(ENV["BART_DB_USER"], ENV["BART_DB_PSWD"])
 
 module Bart
   class App < Sinatra::Base
@@ -48,6 +46,7 @@ module Bart
       server = first_or_create(params[:name])
       server.deploy
       update server, :message => "Deployment triggered", :status => :deploy
+      redirect back
     end
 
     get "/" do

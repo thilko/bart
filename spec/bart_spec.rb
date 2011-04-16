@@ -60,7 +60,7 @@ describe Bart::App do
     it "should start the deployment for the server" do
       put "/server/goya/deploy"
 
-      last_response.should be_ok
+      last_response.should be_redirect
     end
   end 
 end
