@@ -1,6 +1,6 @@
 require "server"
 
-MongoMapper.connection = Mongo::Connection.new("localhost")
+MongoMapper.connection = Mongo::Connection.new("harrington1")
 
 if ENV["RACK_ENV"] == "test"
   MongoMapper.database = 'bart-test'

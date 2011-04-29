@@ -4,7 +4,7 @@ log = File.new "log/bart.log", "a+"
 log.sync = true
 STDOUT.reopen log
 STDERR.reopen log
-p "blub"
+
 # setup bundler
 require "bundler"
 Bundler.require
@@ -14,7 +14,6 @@ lib = File.expand_path("../lib/", __FILE__)
 $:.unshift lib unless $:.include?(lib)
 
 
-p "bla"
 # roll the dice!
 require "bart"
 run Bart::App 

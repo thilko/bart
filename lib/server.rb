@@ -8,11 +8,17 @@ module Bart
     key :message,        String
 
     def deploy
-      #`"ssh deploy@#{name} 'rake deploy'"`
+      Thread.new do
+        `nohup ssh deploy@#{name} rake deploy &`
+      end
     end
 
     def deployable?
-      status.to_sym == :up
+      status.to_sym == :up && team_server?
+    end
+    
+    def team_server?
+      ["kursk", "pluto", "primus", "tirpitz", "hindenburg"].include? name
     end
 
     def up?
