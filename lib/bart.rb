@@ -45,7 +45,7 @@ module Bart
     put "/server/:name/deploy" do
       server = first_or_create(params[:name])
       server.deploy
-      update server, :message => "Deployment triggered", :status => :deploy
+      update server, :message => "deployment triggered", :status => :deploy
       redirect back
     end
 
