@@ -10,9 +10,9 @@ module Bart
     def deploy
       Thread.new do
         if legacy?
-          `nohup ssh deploy@#{name} rake deploy &` 
+          p `nohup ssh -o StrictHostKeyChecking=nod eploy@#{name} rake deploy &` 
         else
-          `nohup ssh deploy@#{name} ./deploy &`
+          p `nohup ssh -o StrictHostKeyChecking=no deploy@#{name} ./deploy &`
         end
       end
     end
