@@ -8,6 +8,7 @@ gem "i18n"
 gem "bson_ext", "~> 1.2.4"
 
 group :test do
+  gem "rake", "~> 0.8.7"
   gem "rack-test", "~> 0.5.7", :require => "rack/test"
   gem "rspec", "~> 2.5.0"
   gem "autotest", "~> 4.4.6"
