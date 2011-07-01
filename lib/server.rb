@@ -9,7 +9,11 @@ module Bart
 
     def deploy
       Thread.new do
-        `nohup ssh deploy@#{name} rake deploy &`
+        if legacy?
+          `nohup ssh deploy@#{name} rake deploy &` 
+        else
+          `nohup ssh deploy@#{name} ./deploy &`
+        end
       end
     end
 
@@ -17,8 +21,12 @@ module Bart
       status.to_sym == :up && team_server?
     end
     
+    def legacy?
+      ["hindenburg", "tirpitz"].include? name
+    end
+    
     def team_server?
-      ["kursk", "pluto", "primus", "tirpitz", "hindenburg"].include? name
+      ["kursk", "pluto", "primus", "tirpitz", "hindenburg", "emil"].include? name
     end
 
     def up?
