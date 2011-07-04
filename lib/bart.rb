@@ -61,7 +61,8 @@ module Bart
     end
 
     def update(server, props = {})
-      server.update_attributes props.merge(:statusdate => DateTime.now)
+      defaults = {:statusdate => DateTime.now, :message => ""}
+      server.update_attributes defaults.merge(props)
       server.save
     end
 
