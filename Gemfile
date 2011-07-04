@@ -6,6 +6,7 @@ gem "mongo_mapper", "~>0.8.6"
 gem "capistrano"
 gem "i18n"
 gem "bson_ext", "~> 1.2.4"
+gem "tzinfo", "~> 0.3.29"
 
 group :test do
   gem "rake", "~> 0.8.7"

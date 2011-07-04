@@ -57,7 +57,10 @@ module Bart
     private
 
     def list_server
-      @server = Server.all || [] 
+      # TODO: need the timezone, because mongomapper returns UTC Dates otherwise
+      Time.zone="Europe/Berlin"
+      @server = Server.all || []
+      @server
     end
 
     def update(server, props = {})

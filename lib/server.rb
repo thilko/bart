@@ -1,5 +1,6 @@
 module Bart
   class Server
+
     include MongoMapper::Document
 
     key :name,           String
